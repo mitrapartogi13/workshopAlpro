@@ -5,6 +5,10 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { Product } from "@/types"; // Sesuaikan dengan path type Anda
 
 export interface CartItem extends Product {
+  id: number; 
+  title: string;
+  image: string;
+  price: number;
   quantity: number;
 }
 
