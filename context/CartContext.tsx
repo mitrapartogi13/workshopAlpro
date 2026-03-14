@@ -2,7 +2,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { Product } from "@/types"; // Sesuaikan dengan path type Anda
+import { Product } from "@/types/product";
 
 export interface CartItem extends Product {
   id: number; 
