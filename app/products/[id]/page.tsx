@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useParams } from "next/navigation"
-import Image from "next/image"
-import { useProduct } from "@/hooks/useProduct"
-import { Button } from "@/components/ui/Button"
-import { useCart } from "@/context/CartContext"
+import { useParams } from "next/navigation";
+import Image from "next/image";
+import { useProduct } from "@/hooks/useProduct";
+import { Button } from "@/components/ui/Button";
+import { useCart } from "@/context/CartContext";
 
 export default function ProductDetailPage() {
-  const { id } = useParams()
-  const { data } = useProduct(id as string)
-  const { addToCart } = useCart()
+  const { id } = useParams();
+  const { data } = useProduct(id as string);
+  const { addToCart } = useCart();
 
-  if (!data) return <div>Loading...</div>
+  if (!data) return <div>Loading...</div>;
 
   return (
     <div
@@ -25,10 +25,9 @@ export default function ProductDetailPage() {
       p-8
       rounded-xl
       shadow-sm
-      "
-    >
+      ">
       <div className="flex justify-center">
-        <Image 
+        <Image
           src={data.image}
           alt={data.title}
           width={320}
@@ -48,8 +47,7 @@ export default function ProductDetailPage() {
           text-3xl
           font-bold
           text-(--primary)
-          "
-        >
+          ">
           ${data.price}
         </p>
 
@@ -61,14 +59,12 @@ export default function ProductDetailPage() {
                 title: data.title,
                 price: data.price,
                 image: data.image,
-                quantity: 1,
               })
-            }
-          >
+            }>
             Add to Cart
           </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }
