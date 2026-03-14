@@ -1,29 +1,37 @@
 // components/layout/Navbar.tsx
-"use client";
+"use client"
 
-import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
-import { useCart } from "@/context/CartContext";
+import Link from "next/link"
+import { useCart } from "@/context/CartContext"
+import { use } from "react"
 
-export default function Navbar() {
-  const { cartCount } = useCart();
+export function Navbar() {
+  const { cartCount } = useCart()
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white border-b shadow-sm">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-gray-800">
+    <nav className="sticky top-0 z-50 bg-[#121212]/80 backdrop-blur-md border-b border-gray-800 shadow-sm">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        <Link href="/" className="text-2xl font-bold tracking-wide text-blue-500 hover:text-blue-400 transition-colors">
           AlproShop
         </Link>
 
-        <Link href="/cart" className="relative p-2 text-gray-600 hover:text-black transition">
-          <ShoppingCart className="w-6 h-6" />
-          {cartCount > 0 && (
-            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
-              {cartCount}
-            </span>
-          )}
-        </Link>
+        <div className="flex items-center gap-6 text-sm font-medium text-gray-300">
+          <Link href="/products" className="hover:text-white transition-colors">Products</Link>
+          <Link href="/categories" className="hover:text-white transition-colors">Categories</Link>
+
+          <Link
+            href="/cart"
+            className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full transition-colors border border-gray-700"
+          >
+            <span>Cart</span>
+            {useCart().cartCount > 0 && (
+              <span className="bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                {useCart().cartCount}
+              </span>
+            )}
+          </Link>
+        </div>
       </div>
     </nav>
-  );
+  )
 }
