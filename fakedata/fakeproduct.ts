@@ -4,7 +4,7 @@ export const products: Product[] = [
   {
     id: 1,
     title: "ScreenWatch",
-    price: 20,
+    price: 30,
     category: "wearables",
     image: "/products/1.png",
     description: "Simple cotton t-shirt",
