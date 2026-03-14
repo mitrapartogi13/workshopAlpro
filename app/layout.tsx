@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 import { Providers } from "@/context/providers";
@@ -11,9 +11,9 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -28,13 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="antialiased bg-slate-50 text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+    <html
+      lang="en"
+      className={`dark ${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className="antialiased bg-slate-950 text-slate-100 selection:bg-blue-500/30 selection:text-blue-200">
         <Providers>
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-grow">{children}</main>
-            <footer className="border-t border-slate-200 bg-white py-8">
+            <footer className="border-t border-slate-800/60 bg-slate-950 py-8">
               <div className="mx-auto max-w-7xl px-6 text-center text-sm text-slate-500">
                 <p>
                   &copy; {new Date().getFullYear()} AlproShop. All rights
