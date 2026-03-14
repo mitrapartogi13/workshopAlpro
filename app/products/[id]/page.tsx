@@ -9,7 +9,7 @@ import { useCart } from "@/context/CartContext"
 export default function ProductDetailPage() {
   const { id } = useParams()
   const { data } = useProduct(id as string)
-  const { addItem } = useCart()
+  const { addToCart } = useCart()
 
   if (!data) return <div>Loading...</div>
 
@@ -56,7 +56,7 @@ export default function ProductDetailPage() {
         <div className="mt-6">
           <Button
             onClick={() =>
-              addItem({
+              addToCart({
                 id: data.id,
                 title: data.title,
                 price: data.price,
