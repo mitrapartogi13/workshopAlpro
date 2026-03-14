@@ -52,17 +52,7 @@ export default function ProductDetailPage() {
         </p>
 
         <div className="mt-6">
-          <Button
-            onClick={() =>
-              addToCart({
-                id: data.id,
-                title: data.title,
-                price: data.price,
-                image: data.image,
-              })
-            }>
-            Add to Cart
-          </Button>
+          <Button onClick={() => addToCart(data)}>Add to Cart</Button>
         </div>
       </div>
     </div>
