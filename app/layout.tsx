@@ -1,23 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 import { Providers } from "@/context/providers";
 import { Navbar } from "@/components/layout/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
   subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "AlproShop",
-  description: "Simple e-commerce built with Next.js",
+  title: "AlproShop | Premium Shopping",
+  description: "Curated collection of premium products.",
 };
 
 export default function RootLayout({
@@ -26,11 +28,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <body className="font-sans antialiased bg-slate-50 text-slate-900 selection:bg-blue-100 selection:text-blue-900">
         <Providers>
-          <Navbar />
-          <main className="p-6">{children}</main>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            <footer className="border-t border-slate-200 bg-white py-8">
+              <div className="mx-auto max-w-7xl px-6 text-center text-sm text-slate-500">
+                <p>
+                  &copy; {new Date().getFullYear()} AlproShop. All rights
+                  reserved.
+                </p>
+              </div>
+            </footer>
+          </div>
         </Providers>
       </body>
     </html>
