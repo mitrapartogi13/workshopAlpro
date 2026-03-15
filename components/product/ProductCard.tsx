@@ -3,6 +3,7 @@
 import { Product } from "@/types/product";
 import Link from "next/link";
 import Image from "next/image";
+import { formatIDR } from "@/lib/utils";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
@@ -28,11 +29,11 @@ export function ProductCard({ product }: { product: Product }) {
             {product.title}
           </h3>
 
-          <div className="mt-auto flex items-end justify-between pt-4">
-            <span className="text-lg font-bold text-white">
-              ${product.price.toFixed(2)}
+          <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-4">
+            <span className="text-base font-bold text-white">
+              {formatIDR(product.price)}
             </span>
-            <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400 transition-colors group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600">
+            <span className="shrink-0 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400 transition-colors group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600">
               View Details
             </span>
           </div>
