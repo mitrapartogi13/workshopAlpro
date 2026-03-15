@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Trash2, Plus, Minus, ArrowLeft } from "lucide-react";
 import { useCart } from "@/context/CartContext";
-import { formatIDR } from "@/lib/utils";
+import { formatUSD } from "@/lib/utils";
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, cartTotal } = useCart();
@@ -36,7 +36,7 @@ export default function CartPage() {
               
               <div className="flex-1">
                 <h3 className="font-semibold text-gray-800 line-clamp-1">{item.title}</h3>
-                <p className="text-blue-600 font-medium mt-1">{formatIDR(item.price)}</p>
+                <p className="text-blue-600 font-medium mt-1">{formatUSD(item.price)}</p>
               </div>
 
               {/* Quantity Controls */}
@@ -63,12 +63,12 @@ export default function CartPage() {
           <h2 className="text-lg font-bold mb-4 text-gray-800">Ringkasan Pesanan</h2>
           <div className="flex justify-between mb-2 text-gray-600">
             <span>Subtotal</span>
-            <span>{formatIDR(cartTotal)}</span>
+            <span>{formatUSD(cartTotal)}</span>
           </div>
           <div className="border-t my-4"></div>
           <div className="flex justify-between mb-6 font-bold text-lg text-gray-800">
             <span>Total</span>
-            <span>{formatIDR(cartTotal)}</span>
+            <span>{formatUSD(cartTotal)}</span>
           </div>
           <button className="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">
             Checkout

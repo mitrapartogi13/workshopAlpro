@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import { products as allFakeProducts } from "@/fakedata/fakeproduct"
 import { useProducts } from "@/hooks/useProducts"
 import { ProductCard } from "@/components/product/ProductCard"
 import { ProductCardSkeleton } from "@/components/product/ProductCardSkeleton"
@@ -16,10 +17,10 @@ export default function CategoriesPage() {
   const [activeCategory, setActiveCategory] = useState<string>("")
   const { data: products, isLoading } = useProducts()
 
-  const categories = useMemo(() => {
-    if (!products) return []
-    return [...new Set(products.map((p) => p.category).filter(Boolean))]
-  }, [products])
+  const categories = useMemo(
+    () => Array.from(new Set(allFakeProducts.map((p) => p.category))),
+    []
+  )
 
   const filteredProducts = useMemo(() => {
     if (!products) return []
