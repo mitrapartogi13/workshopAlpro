@@ -3,7 +3,7 @@
 import { Product } from "@/types/product";
 import Link from "next/link";
 import Image from "next/image";
-import { formatIDR } from "@/lib/utils";
+import { formatUSD } from "@/lib/utils";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
@@ -31,7 +31,7 @@ export function ProductCard({ product }: { product: Product }) {
 
           <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-4">
             <span className="text-base font-bold text-white">
-              {formatIDR(product.price)}
+              {formatUSD(product.price)}
             </span>
             <span className="shrink-0 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400 transition-colors group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600">
               View Details

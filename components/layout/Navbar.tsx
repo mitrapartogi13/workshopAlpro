@@ -1,13 +1,24 @@
 // components/layout/Navbar.tsx
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { AlproLogo } from "@/components/ui/AlproLogo";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Search } from "lucide-react";
 
 export function Navbar() {
   const { cartCount } = useCart();
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  function handleSearch() {
+    const q = searchQuery.trim();
+    if (q) {
+      router.push(`/products?search=${encodeURIComponent(q)}`);
+    }
+  }
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-blue-500/15 bg-slate-950/80 backdrop-blur-xl">
@@ -21,6 +32,27 @@ export function Navbar() {
           aria-label="AlproShop Home">
           <AlproLogo />
         </Link>
+
+        {/* Search bar */}
+        <form
+          role="search"
+          onSubmit={(e) => { e.preventDefault(); handleSearch(); }}
+          className="mx-4 hidden flex-1 max-w-sm items-center rounded-full border border-slate-700/60 bg-slate-900/60 px-3 py-1.5 backdrop-blur-sm transition-colors duration-200 focus-within:border-blue-500/60 focus-within:bg-slate-900/80 md:flex">
+          <input
+            type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search products…"
+            aria-label="Search products"
+            className="min-w-0 flex-1 bg-transparent text-sm text-slate-200 placeholder-slate-500 outline-none"
+          />
+          <button
+            type="submit"
+            aria-label="Submit search"
+            className="ml-2 text-slate-400 transition-colors duration-200 hover:text-blue-400">
+            <Search className="h-4 w-4" />
+          </button>
+        </form>
 
         <div className="flex items-center gap-6 md:gap-8">
           <div className="hidden items-center gap-8 md:flex">
