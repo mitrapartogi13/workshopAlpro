@@ -40,7 +40,7 @@ export const products: Product[] = [
   {
     id: 5,
     title: "Holo Flexbook Elite",
-    price: 2499,
+    price: 150,
     category: "laptops",
     image: "/products/5.png",
     description: "A foldable next-generation laptop featuring a fluid adaptive display and premium materials.",
