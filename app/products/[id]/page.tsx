@@ -8,6 +8,7 @@ import { useProducts } from "@/hooks/useProducts";
 import { Button } from "@/components/ui/Button";
 import { useCart } from "@/context/CartContext";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { formatIDR } from "@/lib/utils";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -89,7 +90,7 @@ export default function ProductDetailPage() {
           </p>
 
           <p className="mt-6 text-3xl font-bold text-blue-400">
-            ${data.price.toFixed(2)}
+            {formatIDR(data.price)}
           </p>
 
           {/* Rating */}
@@ -151,7 +152,7 @@ export default function ProductDetailPage() {
                     {p.title}
                   </p>
                   <p className="mt-1 text-sm font-bold text-white">
-                    ${p.price.toFixed(2)}
+                    {formatIDR(p.price)}
                   </p>
                 </div>
               </Link>
