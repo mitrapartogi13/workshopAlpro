@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   ShieldCheck,
@@ -141,38 +142,57 @@ export default function HomePage() {
             {[
               {
                 label: "Electronics",
-                gradient: "from-blue-950/80 via-slate-900 to-slate-900",
-                accent: "border-blue-800/40",
+                href: "/categories",
+                image: "/products/4.png",
+                imageAlt: "Featured electronics product",
+                accent: "border-blue-800/40 hover:border-blue-500/50",
+                glow: "hover:shadow-blue-500/20",
               },
               {
                 label: "Fashion",
-                gradient: "from-cyan-950/80 via-slate-900 to-slate-900",
-                accent: "border-cyan-800/40",
+                href: "/categories",
+                image: "/products/12.png",
+                imageAlt: "Featured fashion product",
+                accent: "border-cyan-800/40 hover:border-cyan-500/50",
+                glow: "hover:shadow-cyan-500/20",
               },
               {
                 label: "Lifestyle",
-                gradient: "from-indigo-950/80 via-slate-900 to-slate-900",
-                accent: "border-indigo-800/40",
+                href: "/categories",
+                image: "/products/7.png",
+                imageAlt: "Featured lifestyle product",
+                accent: "border-indigo-800/40 hover:border-indigo-500/50",
+                glow: "hover:shadow-indigo-500/20",
               },
             ].map((item, i) => (
-              <div
+              <Link
                 key={i}
-                className={`group relative aspect-[4/3] overflow-hidden rounded-2xl border ${item.accent} bg-gradient-to-br ${item.gradient} transition-all duration-300 hover:border-blue-500/40 hover:shadow-xl hover:shadow-blue-500/10`}>
-                {/* Grid texture — decorative */}
-                <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-20" />
+                href={item.href}
+                className={`group relative aspect-[4/3] overflow-hidden rounded-2xl border ${item.accent} bg-slate-900 transition-all duration-300 hover:shadow-xl ${item.glow}`}>
+                {/* Product image with scale animation */}
+                <Image
+                  src={item.image}
+                  alt={item.imageAlt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+                {/* Hover glow overlay */}
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-blue-600/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                {/* Label */}
                 <div className="absolute inset-0 flex items-end p-6">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-blue-400/60 transition-colors duration-200 group-hover:text-blue-400">
-                      Coming Soon
+                    <p className="text-xs font-semibold uppercase tracking-widest text-blue-400/70 transition-colors duration-200 group-hover:text-blue-400">
+                      Shop Now
                     </p>
-                    <h3 className="mt-1 text-lg font-bold text-white/70 transition-colors duration-200 group-hover:text-white">
+                    <h3 className="mt-1 text-lg font-bold text-white/80 transition-colors duration-200 group-hover:text-white">
                       {item.label}
                     </h3>
                   </div>
                 </div>
-                {/* Subtle hover glow — decorative */}
-                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-blue-600/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
